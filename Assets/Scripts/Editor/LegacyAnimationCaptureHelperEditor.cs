@@ -6,8 +6,8 @@ using UnityEngine;
 /// <summary>
 /// Custom editor for the AnimationCaptureHelper.
 /// </summary>
-[CustomEditor(typeof(AnimationCaptureHelper))]
-public class AnimationCaptureHelperEditor : Editor
+[CustomEditor(typeof(LegacyAnimationCaptureHelper))]
+public class LegacyAnimationCaptureHelperEditor : Editor
 {
     /// <summary>
     /// A message displayed when the target and source clip aren't assigned yet.
@@ -36,7 +36,7 @@ public class AnimationCaptureHelperEditor : Editor
     {
         using (new EditorGUI.DisabledScope(_currentCaptureRoutine != null))
         {
-            var helper = (AnimationCaptureHelper)target;
+            var helper = (LegacyAnimationCaptureHelper)target;
             var targetProp = serializedObject.FindProperty("_target");
             var sourceClipProp = serializedObject.FindProperty("_sourceClip");
 

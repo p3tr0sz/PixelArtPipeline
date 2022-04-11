@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
 /// A component used to help capture FBX animations into sprite sheets.
 /// </summary>
-public class AnimationCaptureHelper : MonoBehaviour
+public class HumanoidAnimationCaptureHelper : MonoBehaviour
 {
     /// <summary>
     /// The target gameobject to capture.
@@ -18,6 +19,8 @@ public class AnimationCaptureHelper : MonoBehaviour
     /// </summary>
     [SerializeField]
     private AnimationClip _sourceClip = null;
+
+    [SerializeField] private Animator _animator = null;
 
     /// <summary>
     /// The FPS to capture the animation at.
@@ -55,7 +58,7 @@ public class AnimationCaptureHelper : MonoBehaviour
         }
         else
         {
-            _sourceClip.SampleAnimation(_target, time);
+            _animator.runtimeAnimatorController.animationClips.First().SampleAnimation(_target, time);
         }
     }
 
